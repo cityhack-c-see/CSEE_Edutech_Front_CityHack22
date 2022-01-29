@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.droom_flutter">
+    package="com.example.droom">
    <application
-        android:label="droom_flutter"
+        android:label="droom"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
