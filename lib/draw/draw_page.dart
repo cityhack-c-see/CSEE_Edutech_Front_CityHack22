@@ -34,17 +34,19 @@ class _DrawPageState extends State<DrawPage> {
                     color: Colors.white,
                   ),
                   Text(drawProvider.points.length.toString()),
-                  GestureDetector(
-                    onPanUpdate: (DragUpdateDetails details){
-                      // RenderObject referenceBox = context.findRenderObject();
-                      // Offset localposition = referenceBox.globalToLocal(details.globalPosition);
-                      final container = context!.findRenderObject() as RenderBox;
-                      final localposition = container.localToGlobal(Offset.zero);
-                      drawProvider.sendDraw(localposition);
-                    },
-                    onPanEnd: (DragEndDetails details){
-                      drawProvider.sendDrawNull();  //pen up
-                    },
+                  Expanded(
+                    child: GestureDetector(
+                      onPanUpdate: (DragUpdateDetails details){
+                        // final RenderObject? referenceBox = context.findRenderObject();
+                        // dynamic localposition = referenceBox.globalToLocal(details.globalPosition);
+                        final container = context.findRenderObject() as RenderBox;
+                        final localposition = container.localToGlobal(details.globalPosition);
+                        drawProvider.sendDraw(localposition);
+                      },
+                      onPanEnd: (DragEndDetails details){
+                        drawProvider.sendDrawNull();  //pen up
+                      },
+                    ),
                   ),
                   CustomPaint(
                     painter: SignaturePainter(drawProvider.pointsList),
@@ -69,13 +71,12 @@ class _DrawPageState extends State<DrawPage> {
                     child: Wrap(
                       spacing: 5,
                       runSpacing: 5,
-                      children: pintColor.key.map((key){
-                        Color value = pintColor[key];
+                      children: pintColor.keys.map((key){
+                        Color value = pintColor[key] as Color;
                         return InkWell(
                           onTap: (){
-                            setColor(context,key);
                               drawProvider.pentColor = key;
-                              drawProvider.notifyListenners();
+                              drawProvider.notifyListeners();
                           },
                           child: Container(
                             width: 32,

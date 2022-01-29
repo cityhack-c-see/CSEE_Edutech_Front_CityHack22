@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/drawroom.dart';
+import 'draw/draw_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: '/home',
-    routes: {
-      '/home': (context) => Home(),
-      '/drawroom': (context) => DrawRoom(),
-    },
+    home: DrawPage(),
+    // initialRoute: '/home',
+    // routes: {
+    //   '/home': (context) => Home(),
+    //   '/drawroom': (context) => DrawRoom(),
+    // },
   ));
 }
 

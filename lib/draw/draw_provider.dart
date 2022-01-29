@@ -65,7 +65,6 @@ class DrawProvider with ChangeNotifier {
           setState();
         } else if (message["type"] == "clear") {
           points.clear();
-
           setState();
         }
       },
@@ -81,10 +80,12 @@ class DrawProvider with ChangeNotifier {
 
   clear() {
     points.clear();
-
     setState();
     _channel.sink
-        .add(jsonEncode({'uuid': 'xxxx', 'type': 'clear', 'msg': 'clear'}));
+        .add(jsonEncode({
+          'uuid': 'xxxx',
+          'type': 'clear',
+          'msg': 'clear'}));
   }
 
   sendDraw(Offset localPosition) {
@@ -111,7 +112,10 @@ class DrawProvider with ChangeNotifier {
   sendDrawNull() {
     points.add(<DrawEntity>[]);
     setState();
-    _channel.sink.add(jsonEncode({'uuid': 'xxxx', 'type': 'sendDrawNull'}));
+    _channel.sink.add(jsonEncode({
+      'uuid': 'xxxx',
+       'type': 'sendDrawNull'}
+       ));
   }
 
   undoDate() {
