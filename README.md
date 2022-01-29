@@ -1,28 +1,16 @@
-# CityHack22 Project Submission
-## Project: < Your CityHack22 Project Name >
-<img src="../assets/img/LOGOS/logo1.png" width="200" alt="project_logo"/>
+# droom
 
-< Replace the logo above with Your Project Logo >
-## Team: < Your Team Name >
-## Members
-- < Team Member 1 > (Leader)
-- < Team Member 2 >
-- < Team Member 3 >
-- < Team Member 4 >
-- < Team Member 5 >
+A new Flutter project.
 
-## Description of the Project (300 words)
+## Getting Started
 
-## 3 Most Impactful Features of the Project (with Screenshot and Short Description (150 words))
-1. < First Feature >
-2. < Second Feature >
-3. < Third Feature >
+This project is a starting point for a Flutter application.
 
-## Tech used (as many as required)
-1. < Tech >
-2. < Tech >
-3. < Tech >
-4. < Tech >
+A few resources to get you started if this is your first Flutter project:
 
-## Link
-- < 3 minute Youtube Video Link for Project Demo >
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
