@@ -16,7 +16,6 @@ class SignaturePainter extends CustomClipper {
   }
   void paint (Canvas canvas,Size size){
     for (int i = 0; i < pointsList.length - 1; i++) {
-      //画线
       if (pointsList[i] != null && pointsList[i + 1] != null) {
         // ignore: avoid_single_cascade_in_expression_statements
         pt
@@ -26,7 +25,6 @@ class SignaturePainter extends CustomClipper {
         canvas.drawLine(pointsList[i].offset, pointsList[i + 1].offset, pt);
       }
     }
-  }
 
   bool shouldRepaint(SignaturePainter other) => other.pointsList != pointsList;
 }
