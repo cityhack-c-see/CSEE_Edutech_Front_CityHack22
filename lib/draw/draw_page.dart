@@ -26,76 +26,86 @@ class _DrawPageState extends State<DrawPage> {
         value: _provider,
         child: Consumer<DrawProvider>(
           builder: (context,drawProvider,_){
-            return Container(
-              color: Color(0x18262B33),
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.white,
-                  ),
-                  Text(drawProvider.points.length.toString()),
+            return Column(
+                children: <Widget>[
                   Expanded(
-                    child: GestureDetector(
-                      onPanUpdate: (DragUpdateDetails details){
-                        // final RenderObject? referenceBox = context.findRenderObject();
-                        // dynamic localposition = referenceBox.globalToLocal(details.globalPosition);
-                        final container = context.findRenderObject() as RenderBox;
-                        final localposition = container.localToGlobal(details.globalPosition);
-                        drawProvider.sendDraw(localposition);
-                      },
-                      onPanEnd: (DragEndDetails details){
-                        drawProvider.sendDrawNull();  //pen up
-                      },
-                    ),
-                  ),
-                  CustomPaint(
-                    painter: SignaturePainter(drawProvider.pointsList),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10,right: 80, bottom: 20),
-                    child: Wrap(
-                      spacing: 5,
-                      runSpacing: 5,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: <Widget>[
-                          buildInkWell(drawProvider, 5),
-                          buildInkWell(drawProvider, 8),
-                          buildInkWell(drawProvider, 10),
-                          buildInkWell(drawProvider, 15),
-                          buildInkWell(drawProvider, 17),
-                          buildInkWell(drawProvider, 20)
-                        ]),
-                    ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10, right: 80,bottom: 20),
-                    child: Wrap(
-                      spacing: 5,
-                      runSpacing: 5,
-                      children: pintColor.keys.map((key){
-                        Color value = pintColor[key] as Color;
-                        return InkWell(
-                          onTap: (){
-                              drawProvider.pentColor = key;
-                              drawProvider.notifyListeners();
-                          },
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            color: value,
-                            child: drawProvider.pentColor == key?
-                            // ignore: prefer_const_constructors
-                            Icon(
-                              Icons.done,
-                              color: Colors.white)
-                              :
-                              null
+                    child: Stack(
+                        children: [
+                          Text(
+                            drawProvider.points.length.toString(),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(16.0),
                             ),
-                        );
-                      }).toList(),
-                    ),
-                  )
-                ],),
-            );
+                          Expanded(
+                            child: GestureDetector(
+                              onPanUpdate: (DragUpdateDetails details){
+                                // final RenderObject? referenceBox = context.findRenderObject();
+                                // dynamic localposition = referenceBox.globalToLocal(details.globalPosition);
+                                final container = context.findRenderObject() as RenderBox;
+                                Offset localposition  = container.localToGlobal(details.globalPosition);
+                                drawProvider.sendDraw(localposition);
+                                drawProvider.points = [drawProvider.points.first,drawProvider.points.last];
+                              },
+                              onPanEnd: (DragEndDetails details){
+                                drawProvider.points = [drawProvider.points.first,drawProvider.points.last];
+                                drawProvider.sendDrawNull();  //pen up
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomPaint(
+                              painter: SignaturePainter(drawProvider.pointsList),
+                            ),
+                          ),
+                          ],
+                      ),
+                      ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10,right: 80, bottom: 20),
+                            child: Wrap(
+                              spacing: 5,
+                              runSpacing: 5,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: <Widget>[
+                                  buildInkWell(drawProvider, 5),
+                                  buildInkWell(drawProvider, 8),
+                                  buildInkWell(drawProvider, 10),
+                                  buildInkWell(drawProvider, 15),
+                                  buildInkWell(drawProvider, 17),
+                                  buildInkWell(drawProvider, 20)
+                                ]),
+                            ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10, right: 80,bottom: 20),
+                            child: Wrap(
+                              spacing: 5,
+                              runSpacing: 5,
+                              children: pintColor.keys.map((key){
+                                Color value = pintColor[key] as Color;
+                                return InkWell(
+                                  onTap: (){
+                                      drawProvider.pentColor = key;
+                                      drawProvider.notifyListeners();
+                                  },
+                                  child: Container(
+                                    width: 32,
+                                    height: 32,
+                                    color: value,
+                                    child: drawProvider.pentColor == key?
+                                    // ignore: prefer_const_constructors
+                                    Icon(
+                                      Icons.done,
+                                      color: Colors.white)
+                                      :
+                                      null
+                                    ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                ]
+        );
           }
         ),
       ),

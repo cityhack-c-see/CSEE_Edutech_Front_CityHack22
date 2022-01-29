@@ -143,7 +143,7 @@ class DrawProvider with ChangeNotifier {
     pointsList = <DrawEntity>[];
     for (int i = 0; i < points.length - 1; i++) {
       pointsList.addAll(points[i]);
-      // pointsList.add(null);
+      //pointsList.add();
     }
   }
 
