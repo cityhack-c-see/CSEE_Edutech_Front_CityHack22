@@ -27,21 +27,25 @@ class _DrawRoomState extends State<DrawRoom> {
             ),
             Expanded(
               flex: 14,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
+                child: MaterialButton(
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
+                  onPressed: (){},
                 ),
             ),
             Spacer(flex: 1),
             Expanded(
               flex: 14,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.red,
+                child: MaterialButton(
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
+                  onPressed: (){
+
+                  },
                 )
             ),
           ],
