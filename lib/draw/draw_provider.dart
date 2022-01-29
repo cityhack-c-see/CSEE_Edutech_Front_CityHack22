@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:droom_flutter/draw/draw_entity.dart';
-import 'package:droom_flutter/draw/signature_painter.dart';
+import '/draw/draw_entity.dart';
+import '/draw/signature_painter.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 
