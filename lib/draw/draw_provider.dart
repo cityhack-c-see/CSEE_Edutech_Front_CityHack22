@@ -35,7 +35,7 @@ class DrawProvider with ChangeNotifier {
   List<DrawEntity> pointsList = <DrawEntity>[];
   String pentColor = "default";
   double pentSize = 5;
-  late WebSocketChannel _channel;
+  WebSocketChannel _channel;
 
   connect() {
     _socketConnect();
@@ -143,7 +143,7 @@ class DrawProvider with ChangeNotifier {
     pointsList = <DrawEntity>[];
     for (int i = 0; i < points.length - 1; i++) {
       pointsList.addAll(points[i]);
-      //pointsList.add();
+      pointsList.add(null);
     }
   }
 

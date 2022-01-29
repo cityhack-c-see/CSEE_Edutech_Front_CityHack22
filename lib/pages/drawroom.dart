@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DrawRoom extends StatefulWidget {
-  const DrawRoom({Key? key}) : super(key: key);
+  const DrawRoom({Key key}) : super(key: key);
 
   @override
   _DrawRoomState createState() => _DrawRoomState();

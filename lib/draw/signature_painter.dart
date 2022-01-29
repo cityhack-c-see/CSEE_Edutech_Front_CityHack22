@@ -1,10 +1,12 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import '/draw/draw_entity.dart';
 import '/draw/draw_provider.dart';
 
 class SignaturePainter extends CustomPainter  {
   List<DrawEntity> pointsList;
-  late Paint pt;
+  Paint pt;
   SignaturePainter(this.pointsList){
     pt = Paint()
       ..color = pintColor['default'] as Color 

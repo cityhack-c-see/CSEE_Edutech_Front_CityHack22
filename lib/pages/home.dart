@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'loading.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({Key key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final bool _SerIsReady = true;
-  late  bool loading = false;
+  bool loading = false;
   final _controllerID = TextEditingController();
 
   @override

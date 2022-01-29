@@ -5,7 +5,7 @@ class DrawEntity {
   Offset offset;
   String color;
   double strokeWidth;
-  //late DrawEntity({Key? key});
-  DrawEntity( this.offset,{  this.color = "default",  this.strokeWidth = 5.0});
-   
+  
+  DrawEntity( this.offset ,{  this.color = "default",  this.strokeWidth = 5.0});
+  //bool? create(DrawEntity other) => other == null;
 }

@@ -45,10 +45,10 @@ class _DrawPageState extends State<DrawPage> {
                                 final container = context.findRenderObject() as RenderBox;
                                 Offset localposition  = container.localToGlobal(details.globalPosition);
                                 drawProvider.sendDraw(localposition);
-                                drawProvider.points = [drawProvider.points.first,drawProvider.points.last];
                               },
                               onPanEnd: (DragEndDetails details){
-                                drawProvider.points = [drawProvider.points.first,drawProvider.points.last];
+                                
+                                drawProvider.pointsList = [drawProvider.pointsList.last,drawProvider.pointsList.last];
                                 drawProvider.sendDrawNull();  //pen up
                               },
                             ),
