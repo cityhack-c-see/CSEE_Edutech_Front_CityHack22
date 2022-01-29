@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
+  final bool _SerIsReady = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +104,15 @@ class Home extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     elevation: 10,
-                    onPressed: (){},
+                    onPressed: (){
+                      if ( _SerIsReady == true) {
+                        Navigator.pushNamed(
+                          context,
+                          '/drawroom',
+                          arguments: {"roomid": "18"}
+                        );
+                      }
+                    },
                     child: Text("create"),
                   )
                 ),
@@ -119,7 +127,15 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       elevation: 10,
-                      onPressed: (){},
+                      onPressed: (){
+                        if ( _SerIsReady == true) {
+                          Navigator.pushNamed(
+                              context,
+                              '/drawroom',
+                              arguments: {"roomid": "18"}
+                          );
+                        }
+                      },
                       child: Text("Join"),
                     )
                 )
