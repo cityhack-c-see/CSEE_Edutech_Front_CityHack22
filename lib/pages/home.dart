@@ -99,6 +99,7 @@ class Home extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   child: MaterialButton(
+                    color: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -113,6 +114,7 @@ class Home extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.center,
                     child: MaterialButton(
+                      color: Colors.red,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
