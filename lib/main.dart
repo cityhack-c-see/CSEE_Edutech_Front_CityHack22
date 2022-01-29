@@ -5,12 +5,12 @@ import 'draw/draw_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: DrawPage(),
-    // initialRoute: '/home',
-    // routes: {
-    //   '/home': (context) => Home(),
-    //   '/drawroom': (context) => DrawRoom(),
-    // },
+    // home: DrawPage(),
+    initialRoute: '/home',
+    routes: {
+      '/home': (context) => Home(),
+      '/drawroom': (context) => DrawRoom(),
+    },
   ));
 }
 
