@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Create_Button.png</title>
+ <defs>
+  <filter id="filter3318">
+   <feGaussianBlur stdDeviation="0.379811" id="feGaussianBlur3320"/>
+  </filter>
+  <linearGradient id="linearGradient3322">
+   <stop offset="0" stop-color="rgb(188, 230, 255)" id="stop3324"/>
+   <stop offset="0.623077" stop-color="rgb(114, 162, 219)" id="stop3326"/>
+   <stop offset="1" stop-color="rgb(0, 68, 143)" id="stop3328"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3255">
+   <stop offset="0" stop-color="rgb(0, 30, 110)" id="stop3257"/>
+   <stop offset="1" stop-opacity="0" stop-color="rgb(0, 0, 0)" id="stop3259"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3247">
+   <stop offset="0" stop-color="rgb(209, 253, 255)" id="stop3249"/>
+   <stop offset="1" stop-opacity="0" stop-color="rgb(196, 230, 255)" id="stop3251"/>
+  </linearGradient>
+  <linearGradient id="linearGradient3237">
+   <stop offset="0" stop-color="rgb(255, 255, 255)" id="stop3239"/>
+   <stop offset="1" stop-opacity="0.256198" stop-color="rgb(209, 243, 255)" id="stop3241"/>
+  </linearGradient>
+  <linearGradient xlink:href="#linearGradient3247" y2="-0.000001" x2="0.555564" y1="1.02941" x1="0.555564" id="linearGradient3307"/>
+  <linearGradient xlink:href="#linearGradient3237" y2="1.18163" x2="0.500366" y1="-0.000006" x1="0.500366" id="linearGradient3310"/>
+  <linearGradient xlink:href="#linearGradient3322" y2="0.177594" x2="0.561471" y1="0.808179" x1="0.561471" id="linearGradient3313"/>
+  <linearGradient xlink:href="#linearGradient3255" y2="1.40424" x2="0.365621" y1="0.172472" x1="0.365621" id="linearGradient3315"/>
+ </defs>
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1">
+   <g id="g2413">
+    <rect ry="11.7708" rx="11.9304" height="23.5416" width="52.4205" y="-4.70705" x="-23.7439" transform="matrix(5.32234, 0, 0, 5.6071, -1.62655, -4.6071)" stroke-miterlimit="4" stroke-dashoffset="0" fill-opacity="0.140187" fill="#000000" filter="url(#filter3318)" id="button_shadow"/>
+    <rect ry="10.4891" rx="10.192" height="120.397" width="262.787" y="-28.068" x="-119.894" stroke-width="1.02175" stroke-miterlimit="4" stroke-dashoffset="0" stroke="url(#linearGradient3315)" fill="url(#linearGradient3313)" id="glossy_button"/>
+    <path d="m-65.8806,-25.26087l154.923393,0c27.078148,0.782471 43.174324,40.17391 16.347374,40.17391l-187.788445,0c-26.82692,0 -10.730782,-39.391439 16.517639,-40.17391l0.000015,0l0.000015,0l0.000008,0z" stroke-width="2" stroke-miterlimit="4" stroke-dashoffset="0" fill="url(#linearGradient3310)" opacity="0.883621" id="light_reflex"/>
+    <rect ry="3.29412" rx="3.54612" height="40.1739" width="193.154" y="43.6087" x="-85.0769" stroke-width="2" stroke-miterlimit="4" stroke-dashoffset="0" fill="url(#linearGradient3307)" id="filtered_light"/>
+   </g>
+  </g>
+  <text xml:space="preserve" y="5.0584" x="-62.3623" transform="matrix(2.65385, 0, 0, 2.85185, 171.346, 39.963)" text-anchor="middle" stroke-width="0" stroke="#000000" fill="#000000" style="cursor: move; pointer-events: inherit;" font-size="24px" font-family="Arial" id="svg_1">Create</text>
+ </g>
+</svg>
