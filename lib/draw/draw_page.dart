@@ -42,13 +42,14 @@ class _DrawPageState extends State<DrawPage> {
       socket.emit('join', {"Room ID": roomid, "Host": _host});
     });
     socket.on("server_response", (message) {
+      print("receive");
       print(message);
-      if (message['Msg'] != null) {
-        groupid = message['Msg'];
-      }
+      //if (message['Msg'] != null) {
+      //  groupid = message['Msg'];
+      //}
 
       print(message);
-      message = jsonDecode(message);
+      // message = jsonDecode(message);
       if (message["type"] == "sendDraw") {
         if (_provider.points.isEmpty) {
           _provider.points.add(<DrawEntity>[]);
@@ -104,18 +105,18 @@ class _DrawPageState extends State<DrawPage> {
                           _provider.points.add(<DrawEntity>[]);
                           _provider.points.add(<DrawEntity>[]);
                         }
-                        _provider.points[_provider.points.length - 2].add(DrawEntity(_localposition,
-                            color: _provider.pentColor, strokeWidth: _provider.pentSize));
-                        socket.emit(
-                            "client_request",
-                            jsonEncode({
-                              'Room ID': roomid,
-                              'type': 'sendDraw',
-                              'pentColor': _provider.pentColor,
-                              'pentSize': _provider.pentSize,
-                              "dx": _localposition.dx,
-                              "dy": _localposition.dy
-                            }));
+                        _provider.points[_provider.points.length - 2].add(
+                            DrawEntity(_localposition,
+                                color: _provider.pentColor,
+                                strokeWidth: _provider.pentSize));
+                        socket.emit("client_request", {
+                          'Room ID': roomid,
+                          'type': 'sendDraw',
+                          'pentColor': _provider.pentColor,
+                          'pentSize': _provider.pentSize,
+                          "dx": _localposition.dx,
+                          "dy": _localposition.dy
+                        });
                       },
                       onPanEnd: (DragEndDetails details) {
                         drawProvider.pointsList = [
@@ -123,10 +124,8 @@ class _DrawPageState extends State<DrawPage> {
                           drawProvider.pointsList.last
                         ];
                         drawProvider.sendDrawNull(); //pen up
-                        socket.emit("client_request",jsonEncode({
-                          'Room ID': roomid,
-                          'type': 'sendDrawNull'}
-                          ));
+                        socket.emit("client_request",
+                            {'Room ID': roomid, 'type': 'sendDrawNull'});
                       },
                     ),
                   ),
