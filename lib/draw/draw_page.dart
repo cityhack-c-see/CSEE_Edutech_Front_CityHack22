@@ -4,23 +4,26 @@ import 'package:provider/provider.dart';
 import '/draw/signature_painter.dart';
 import '/draw/draw_provider.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-
-
+import 'dart:convert';
+import '/draw/draw_entity.dart';
 class DrawPage extends StatefulWidget {
   String roomid;
   String _host;
   
   DrawPage(this.roomid,this._host);
   @override
-  _DrawPageState createState() => _DrawPageState();
+  _DrawPageState createState() => _DrawPageState(this.roomid,this._host);
 }
 class _DrawPageState extends State<DrawPage> {
   // ignore: unused_field
+  _DrawPageState(String roomid,String _host){
+    this.roomid = roomid;
+    this._host = _host;
+  }
+  String roomid;
+  String _host;
   final String url = 'http://14.198.186.160:5000/websocket';
   DrawProvider _provider = DrawProvider();
-
-  String get roomid => roomid;
-  String get _host => _host;
   String groupid;
   IO.Socket socket;
   //socket.emit('join', messagePost);
@@ -42,11 +45,32 @@ class _DrawPageState extends State<DrawPage> {
       if(message['Msg'] != null){
         groupid = message['Msg'];
       }
-    });
+    
+    print(message);
+        message = jsonDecode(message);
+        if (message["type"] == "sendDraw") {
+          if (_provider.points.isEmpty) {
+            _provider.points.add(<DrawEntity>[]);
+            _provider.points.add(<DrawEntity>[]);
+          }
+          _provider.pentColor = message["pentColor"];
+          _provider.pentSize = message["pentSize"];
+
+          _provider.points[_provider.points.length - 2].add(DrawEntity(
+              Offset(message["dx"], message["dy"]),
+              color: _provider.pentColor,
+              strokeWidth: _provider.pentSize));
+          _provider.setState();
+        } else if (message["type"] == "sendDrawNull") {
+          _provider.points.add(<DrawEntity>[]);
+          _provider.setState();
+        } else if (message["type"] == "clear") {
+          _provider.points.clear();
+          _provider.setState();
+        }
     socket.connect();
+    });
   }
-  
-  
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +170,7 @@ class _DrawPageState extends State<DrawPage> {
     );
   }
   
+  @override
   InkWell buildInkWell(DrawProvider drawProvider, double size) {
     return InkWell(
       onTap: () {
@@ -180,5 +205,10 @@ class _DrawPageState extends State<DrawPage> {
   }
 }
 
-mixin _host {
-}
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
