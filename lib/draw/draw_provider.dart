@@ -43,7 +43,6 @@ class DrawProvider with ChangeNotifier {
   connect() {
     _socketConnect();
     
-    
   }
 
   _socketConnect() {
