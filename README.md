@@ -1,6 +1,6 @@
 # CityHack22 Project Submission
 ## Project: DROOM
-<img src="assets/imgages/pen-pattern-background.jpeg" width="200" alt="project_logo"/>
+<img src="assets/imgages/droom.png" width="200" alt="project_logo"/>
 
 
 ## Team: C.SEE
