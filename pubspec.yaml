@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.4
   http: ^0.13.4
   dio: ^4.0.4
+  socket_io_client: ^1.0.2
 
 dev_dependencies:
   flutter_test:

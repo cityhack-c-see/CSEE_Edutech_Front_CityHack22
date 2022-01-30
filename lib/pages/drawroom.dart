@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-
+import '../draw/draw_page.dart';
 
 class DrawRoom extends StatefulWidget {
   const DrawRoom({Key key}) : super(key: key);
@@ -14,33 +14,12 @@ class DrawRoom extends StatefulWidget {
 
 class _DrawRoomState extends State<DrawRoom> {
   var args;
-  Dio dio = Dio();
 
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
     if (arguments != null) {
       args = arguments["roomid"];
-    }
-    if (arguments["create_room"] == "FaLsE") {
-      try {
-        var response = dio.get("http://14.198.186.160:5000/api/room" + args) as Response;
-        var responseBody = response;
-        inspect(response);
-        print(responseBody);
-      } on DioError catch (e) {
-        print(e.response.statusCode);
-      }
-    } else if (arguments["create_room"] == "TrUe") {
-      try {
-        // Create
-        var response = dio.post("http://14.198.186.160:5000/api/room") as Response;
-        var responseBody = response;
-        inspect(response);
-        print(responseBody);
-      } on DioError catch (e) {
-        print(e.response.statusCode);
-      }
     }
 
     return Scaffold(
@@ -55,6 +34,7 @@ class _DrawRoomState extends State<DrawRoom> {
             Expanded(
               flex: 14,
               child: Container(
+                child: DrawPage(),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(30),
