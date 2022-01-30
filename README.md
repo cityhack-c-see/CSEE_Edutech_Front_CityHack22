@@ -30,7 +30,6 @@ Last but not least, Droom is based on Flutter, the advantage is that we only nee
 1. FrontEnd(Flutter)
 2. BackEnd(Python Flask)
 3. Socket.io
-4. Imagination, creative, strong, very good
 
 ## Link
 - < 3 minute Youtube Video Link for Project Demo >
