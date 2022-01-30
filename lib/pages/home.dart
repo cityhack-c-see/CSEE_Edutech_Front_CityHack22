@@ -119,6 +119,7 @@ class _HomeState extends State<Home> {
               elevation: 5,
               borderRadius: BorderRadius.circular(10),
               child: TextFormField(
+                keyboardType: TextInputType.number,
                 autofocus: false,
                 decoration: InputDecoration(
                   prefixIcon: Icon(

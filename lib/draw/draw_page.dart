@@ -29,7 +29,7 @@ class _DrawPageState extends State<DrawPage> {
     super.initState();
     _provider.connect();
     socket =
-        IO.io('rul', <String, dynamic>{
+        IO.io(url, <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
     });
