@@ -13,15 +13,18 @@ class DrawRoom extends StatefulWidget {
 }
 
 class _DrawRoomState extends State<DrawRoom> {
-  var args;
+  var args,_host;
 
   @override
   Widget build(BuildContext context) {
+    DrawPage _public;
     final Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
     if (arguments != null) {
-      args = arguments["roomid"];
+      args = arguments["roomid"].toString();
+      _host = arguments['host'];
+      _public = DrawPage(args,_host);
     }
-
+    
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -34,7 +37,7 @@ class _DrawRoomState extends State<DrawRoom> {
             Expanded(
               flex: 14,
               child: Container(
-                child: DrawPage(),
+                child: _public,
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(30),

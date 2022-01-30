@@ -7,6 +7,7 @@ import '/draw/signature_painter.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/io.dart';
 
+
 Map<String, Color> pintColor = {
   'default': Colors.indigo,
   'black': Colors.black,
@@ -28,6 +29,7 @@ Map<String, Color> pintColor = {
 };
 
 class DrawProvider with ChangeNotifier {
+
   final String _url = 'ws://10.10.3.55:8080/mini';
 
   List<List<DrawEntity>> undoPoints = <List<DrawEntity>>[];
@@ -37,12 +39,16 @@ class DrawProvider with ChangeNotifier {
   double pentSize = 5;
   WebSocketChannel _channel;
 
+  
   connect() {
     _socketConnect();
+    
+    
   }
 
   _socketConnect() {
     _channel = IOWebSocketChannel.connect(_url);
+    
     _channel.stream.listen(
       (message) {
         print("$message");
@@ -83,7 +89,7 @@ class DrawProvider with ChangeNotifier {
     setState();
     _channel.sink
         .add(jsonEncode({
-          'uuid': 'xxxx',
+          'Room ID': 'xxxx',
           'type': 'clear',
           'msg': 'clear'}));
   }
@@ -100,7 +106,7 @@ class DrawProvider with ChangeNotifier {
     setState();
 
     _channel.sink.add(jsonEncode({
-      'uuid': 'xxxx',
+      'Room ID': 'xxxx',
       'type': 'sendDraw',
       'pentColor': pentColor,
       'pentSize': pentSize,
@@ -113,7 +119,7 @@ class DrawProvider with ChangeNotifier {
     points.add(<DrawEntity>[]);
     setState();
     _channel.sink.add(jsonEncode({
-      'uuid': 'xxxx',
+      'Room ID': 'xxxx',
        'type': 'sendDrawNull'}
        ));
   }
@@ -122,7 +128,7 @@ class DrawProvider with ChangeNotifier {
     undoPoints.add(points[points.length - 3]);
     points.removeAt(points.length - 3);
     setState();
-    _channel.sink.add(jsonEncode({'uuid': 'xxxx', 'type': 'sendDrawUndo'}));
+    _channel.sink.add(jsonEncode({'Room ID': 'xxxx', 'type': 'sendDrawUndo'}));
   }
 
   reverseUndoDate() {
@@ -130,7 +136,7 @@ class DrawProvider with ChangeNotifier {
     points.insert(points.length - 2, ss);
 
     setState();
-    _channel.sink.add(jsonEncode({'uuid': 'xxxx', 'type': 'reverseUndoDate'}));
+    _channel.sink.add(jsonEncode({'Room ID': 'xxxx', 'type': 'reverseUndoDate'}));
   }
 
   @override

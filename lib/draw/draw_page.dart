@@ -3,23 +3,52 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import '/draw/signature_painter.dart';
 import '/draw/draw_provider.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 
 class DrawPage extends StatefulWidget {
+  String roomid;
+  String _host;
+  
+  DrawPage(this.roomid,this._host);
   @override
   _DrawPageState createState() => _DrawPageState();
 }
-
 class _DrawPageState extends State<DrawPage> {
   // ignore: unused_field
+  final String url = 'http://14.198.186.160:5000/websocket';
   DrawProvider _provider = DrawProvider();
 
+  String get roomid => roomid;
+  String get _host => _host;
+  String groupid;
+  IO.Socket socket;
+  //socket.emit('join', messagePost);
   @override
   void initState() {
     super.initState();
     _provider.connect();
+    socket =
+        IO.io('rul', <String, dynamic>{
+      'transports': ['websocket'],
+      'autoConnect': true,
+    });
+    socket.onConnect((_) {
+      print('connected to websocket');
+      socket.emit('join',{"Room ID" : roomid, "Host":_host} );
+    });
+    socket.on("server_response",(message){
+      print(message);
+      if(message['Msg'] != null){
+        groupid = message['Msg'];
+      }
+    });
+    socket.connect();
+    
   }
   
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +61,9 @@ class _DrawPageState extends State<DrawPage> {
                   Expanded(
                     child: Stack(
                         children: [
-                          Text(
-                            drawProvider.points.length.toString(),
-                          ),
+                          // Text(
+                          //   drawProvider.points.length.toString(),
+                          // ),
                           Padding(
                             padding: EdgeInsets.all(16.0),
                             ),
@@ -149,4 +178,7 @@ class _DrawPageState extends State<DrawPage> {
     _provider.dispose();
     super.dispose();
   }
+}
+
+mixin _host {
 }

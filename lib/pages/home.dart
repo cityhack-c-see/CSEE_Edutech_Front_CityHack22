@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
               }
               dynamic error;
               Response<Map> response =await dio.get(URL+ "/" + _controllerID.text);
-              Map  responseBody = response.data;
+              Map responseBody = response.data;
               inspect(response);
               if(response != null){
                 _SerIsReady = true;
@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
               if(error == "False"){
                 Navigator.pushNamed(context, '/drawroom', arguments: {
                   "roomid": _controllerID.text,
-                  "join_room": "FaLsE"
+                  "host": "False"
                   });
               }
             },
@@ -175,7 +175,7 @@ class _HomeState extends State<Home> {
                 loading = false;
               });
               Navigator.pushNamed(context, '/drawroom',
-                  arguments: {"roomid": room_id, "create_room": "TrUe"});
+                  arguments: {"roomid": room_id, "host": "True"});
             }
           },
           child: Text(
