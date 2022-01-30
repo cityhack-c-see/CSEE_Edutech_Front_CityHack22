@@ -1,8 +1,6 @@
 # CityHack22 Project Submission
 ## Project: DROOM
-<img src="../assets/img/LOGOS/logo1.png" width="200" alt="project_logo"/>
 
-< Replace the logo above with Your Project Logo >
 ## Team: C.SEE
 ## Members
 - Ning Tong Qi (Leader)
