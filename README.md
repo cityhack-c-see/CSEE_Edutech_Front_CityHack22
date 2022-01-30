@@ -32,4 +32,4 @@ Last but not least, Droom is based on Flutter, the advantage is that we only nee
 3. Socket.io
 
 ## Link
-- < 3 minute Youtube Video Link for Project Demo >
+https://youtu.be/LZMS5aV16X4
