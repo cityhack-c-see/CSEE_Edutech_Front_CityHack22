@@ -5,8 +5,8 @@
 < Replace the logo above with Your Project Logo >
 ## Team: C.SEE
 ## Members
-- NING TONG QI (Leader)
-- WONG CHI KUEN
+- Ning Tong Qi (Leader)
+- Wong Chi Kuen
 - Chan Cheuk Fung
 - Lam Tin Ho Eugene
 - Tam Kai Fung
