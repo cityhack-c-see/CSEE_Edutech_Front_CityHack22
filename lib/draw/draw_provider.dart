@@ -103,7 +103,7 @@ class DrawProvider with ChangeNotifier {
         DrawEntity(localPosition, color: pentColor, strokeWidth: pentSize));
 
     setState();
-
+    
     _channel.sink.add(jsonEncode({
       'Room ID': 'xxxx',
       'type': 'sendDraw',
